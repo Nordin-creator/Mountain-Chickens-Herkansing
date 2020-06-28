@@ -25,43 +25,7 @@ void draw()
   //println(screen);
   println("Screen " + screen);
 
-  switch(screen)
-  {
-  case 0:
-    style.text = "Dit is Monay\n Hij houdt ervan om mensen voor de gek te houden";
-    style.picture = style.laugh;
-    break;
-
-  case 1:
-    style.text = "Dit zijn de dobbelstenen";
-    style.picture = style.dobbelstenen;
-    break;
-
-  case 2:
-    style.text = "Dit is een bankrun fiche";
-    style.picture = style.bankrun;
-    break;
-
-  case 3:
-    style.text = "Dit is goud";
-    style.picture = style.goud;
-    break;
-
-  case 4:
-    style.text = "Dit zijn de goederen";
-    style.picture = style.goederen;
-    break;
-
-  case 5:
-    style.text = "Dit is een gilde";
-    style.picture = style.gilde;
-    break;
-
-  default:
-    style.text = "Je hebt te ver geklikt";
-    style.picture = style.bank;
-    break;
-  }
+  screens.Display();
 
   if (Screen.size() < 4)
   {
