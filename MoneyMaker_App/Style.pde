@@ -2,7 +2,6 @@
 //will be handled. like textsizes and colors etc.
 class Style
 {
-  int textSize;
   color backgroundColor;
   color black;
   color white;
@@ -10,7 +9,6 @@ class Style
 
   float size = 500;
   float posImg = 50;
-  float posTxt = 750;
 
   PImage b10;
   PImage g10;
@@ -45,12 +43,9 @@ class Style
   PImage linkerPijl;
 
   PImage picture;
-  String text;
-
 
   Style()
   {
-    textSize = 45;
     backgroundColor = color(37, 116, 179);
     black = color(0);
     white = color(255);
@@ -88,7 +83,6 @@ class Style
     rechterPijl = loadImage("data/rechterpijl.png");
     linkerPijl = loadImage("data/linkerpijl.png");
 
-    picture = r10;
-    text = "hello";
+    picture = laugh;
   }
 }

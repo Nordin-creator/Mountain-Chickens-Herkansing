@@ -1,19 +1,19 @@
-ArrayList <Screens> Screen;
+ArrayList<Screen> screens;
 
-Screens screens;
+//Screens screens;
 Style style;
-int screen;
+Text text;
+int screen = 1;
 int count;
-final int countLimit = 40;
-// 0 voor beginners versie, 1 voor volledige versie.
-int version;
+final int COUNT_LIMIT = 40;
 
 void setup()
 {
   size(1650, 900);
-  screens = new Screens();
+  text = new Text();
+  screens = new ArrayList<Screen>();
   style = new Style();
-  Screen = new ArrayList<Screens>();
+  //screens = new Screen();
   textAlign(CENTER);
   rectMode(CENTER);
 }
@@ -22,29 +22,39 @@ void draw()
 {
   count++;
   background(style.backgroundColor);
-  //println(screen);
   println("Screen " + screen);
+  screens.add(new Screen());
+  defaultScreen();
+  //screens.display();
 
-  screens.Display();
-
-  if (Screen.size() < 4)
+  /*
+  if (screens.size() < 4)
+   {
+   screens.add(new Screen());
+   }
+   */
+  for (int i = 0; i < screens.size(); i++)
   {
-    Screen.add(new Screens());
-  }
-  for (int i = 0; i < Screen.size(); i++)
-  {
-    Screens s = Screen.get(i);
-    s.LetsUseThisScreenPattern();
+    Screen s = screens.get(i);
+    s.display();
   }
 }
 
-//This function calculates whether or not a rectangle has been clicked on.
-//Enter the coördinates (x0, y0) and the sizes (w0, h0) of the rect you want to calculate the overlap with.
-//The count makes it so that you dont accidentally skip a screen by holding the mouse button too long.
-//NOTE: this only works when the rect is in rectMode(CENTER).
+void defaultScreen()
+{
+  imageMode(CORNER);
+  textSize(text.TEXT_SIZE);
+
+  text(text.text, text.TEXT_START, text.TEXT_STOP, text.TEXT_XPOSITION, text.TEXT_YPOSITION);
+  image(style.picture, style.posImg, style.posImg, style.size, style.size);
+
+  next(screen--);
+  previous(screen++);
+}
+
 boolean overlaps(float x0, float y0, float w0, float h0)
 {
-  if (mouseX > (x0 - w0/2) && mouseX < (x0 + w0/2) && mouseY > (y0 - h0/2) && mouseY < (y0 + h0/2) && mousePressed && count > countLimit)
+  if (mouseX > (x0 - w0/2) && mouseX < (x0 + w0/2) && mouseY > (y0 - h0/2) && mouseY < (y0 + h0/2) && mousePressed && count > COUNT_LIMIT)
   {
     count = 0;
     return true;
@@ -54,37 +64,6 @@ boolean overlaps(float x0, float y0, float w0, float h0)
   }
 }
 
-//This function calculates if the mouse is hovering over a rectangle.
-//Enter the coördinates (x0, y0) and the sizes (w0, h0) of the rect you want to calculate the overlap with.
-//NOTE: this only works when the rect is in rectMode(CENTER).
-boolean overlapsHover(float x0, float y0, float w0, float h0)
-{
-  if (mouseX > (x0 - w0/2) && mouseX < (x0 + w0/2) && mouseY > (y0 - h0/2) && mouseY < (y0 + h0/2))
-  {
-    return true;
-  } else
-  {
-    return false;
-  }
-}
-
-//This function draws an arrow in the bottom left corner of the screen
-//When it is clicked the screen changes to the screen number given in the paramater of this function
-//Count makes it impossible for the player to accidentally skip a screen by holding the mouse button for too long
-void previous(int previousScreen)
-{
-  imageMode(CENTER);
-  fill(style.white);
-  image(style.linkerPijl, 100, 865, 100, 50);
-  if (overlaps(100, 865, 100, 50))
-  {
-    screen = previousScreen;
-  }
-}
-
-//This function draws an arrow in the bottom right corner of the screen
-//When it is clicked the screen changes to the screen number given in the paramater of this function
-//Count makes it impossible for the player to accidentally skip a screen by holding the mouse button for too long
 void next(int nextScreen)
 {
   imageMode(CENTER);
@@ -94,5 +73,16 @@ void next(int nextScreen)
   if (overlaps(1500, 865, 100, 50))
   {
     screen = nextScreen;
+  }
+}
+
+void previous(int previousScreen)
+{
+  imageMode(CENTER);
+  fill(style.white);
+  image(style.linkerPijl, 100, 865, 100, 50);
+  if (overlaps(100, 865, 100, 50))
+  {
+    screen = previousScreen;
   }
 }
