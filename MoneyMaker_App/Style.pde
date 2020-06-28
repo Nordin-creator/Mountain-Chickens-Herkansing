@@ -44,6 +44,9 @@ class Style
   PImage rechterPijl;
   PImage linkerPijl;
 
+  PImage picture;
+  String text;
+
 
   Style()
   {
@@ -60,7 +63,7 @@ class Style
     g20 = loadImage("data/20g.png");
     r20 = loadImage("data/20r.png");
 
-    baksteen = loadImage("data/Baksteen.png");
+    baksteen = loadImage("data/Bakstenen.png");
     bloem = loadImage("data/Bloem.png");
     boot = loadImage("data/Boot.png");
     molen = loadImage("data/Molen.png");
@@ -84,5 +87,8 @@ class Style
 
     rechterPijl = loadImage("data/rechterpijl.png");
     linkerPijl = loadImage("data/linkerpijl.png");
+
+    picture = r10;
+    text = "hello";
   }
 }

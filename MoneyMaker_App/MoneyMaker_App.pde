@@ -24,7 +24,17 @@ void draw()
   background(style.backgroundColor);
   //println(screen);
   println("Screen " + screen);
-
+  
+if (screen == 0){
+  style.text = "this is a brick";
+  style.picture = style.baksteen;  
+  
+  }
+  if (screen == 1){
+  style.text = "this is a dice";
+  style.picture = style.b10;  
+  
+  }
   if (Screen.size() < 4)
   {
     Screen.add(new Screens());
@@ -34,6 +44,7 @@ void draw()
     Screens s = Screen.get(i);
     s.LetsUseThisScreenPattern();
   }
+  
   /* switch(screen)
    {
    case 1:
