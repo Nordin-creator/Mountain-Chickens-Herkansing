@@ -1,6 +1,8 @@
+ArrayList <Screens> Screen;
+
 Screens screens;
 Style style;
-int screen = 1;
+int screen;
 int count;
 final int countLimit = 40;
 // 0 voor beginners versie, 1 voor volledige versie.
@@ -11,6 +13,7 @@ void setup()
   size(1650, 900);
   screens = new Screens();
   style = new Style();
+  Screen = new ArrayList<Screens>();
   textAlign(CENTER);
   rectMode(CENTER);
 }
@@ -22,16 +25,25 @@ void draw()
   //println(screen);
   println("Screen " + screen);
 
-  switch(screen)
+  if (Screen.size() < 4)
   {
-  case 1:
-    screens.screen1();
-    return;
-
-  case 2:
-    screens.screen2();
-    return;
+    Screen.add(new Screens());
   }
+  for (int i = 0; i < Screen.size(); i++)
+  {
+    Screens s = Screen.get(i);
+    s.LetsUseThisScreenPattern();
+  }
+  /* switch(screen)
+   {
+   case 1:
+   screens.screen1();
+   return;
+   
+   case 2:
+   screens.screen2();
+   return;
+   }*/
 }
 
 //This function calculates whether or not a rectangle has been clicked on.
@@ -86,7 +98,7 @@ void next(int nextScreen)
   imageMode(CENTER);
   fill(style.white);
   image(style.rechterPijl, 1500, 865, 100, 50);
-  
+
   if (overlaps(1500, 865, 100, 50))
   {
     screen = nextScreen;

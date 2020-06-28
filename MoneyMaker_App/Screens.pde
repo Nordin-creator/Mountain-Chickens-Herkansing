@@ -10,10 +10,11 @@ class Screens
     imageMode(CORNER);
     textMode(CORNER);
     textSize(style.textSize);
+    text(screen, 1600, 50);
     image(style.shrug, style.posImg, style.posImg, style.size, style.size);
     text("Lorem ipsum dolor sit amet, consectetur\n adipiscing elit. Praesent maximus.", style.posTxt, style.posTxt);
-    //next();
-    //previous;
+    next(screen+1);
+    previous(screen-1);
   }
 
   void screen1()
