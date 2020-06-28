@@ -45,7 +45,7 @@ void defaultScreen()
   imageMode(CORNER);
   textSize(text.TEXT_SIZE);
 
-  text(text.text, text.TEXT_START, text.TEXT_STOP, text.TEXT_XPOSITION, text.TEXT_YPOSITION);
+  text(text.text, text.TEXT_XPOSITION, text.TEXT_YPOSITION, text.TEXT_START, text.TEXT_STOP);
   image(style.picture, style.posImg, style.posImg, style.size, style.size);
 
   next(screen--);
