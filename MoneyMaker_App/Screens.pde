@@ -10,7 +10,6 @@ class Screens
   void LetsUseThisScreenPattern()
   {
     imageMode(CORNER);
-    //textMode(CORNER);
     textSize(style.textSize);
     text(screen, 1600, 50);
     image(style.picture, style.posImg, style.posImg, style.size, style.size);
