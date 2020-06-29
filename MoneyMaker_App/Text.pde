@@ -7,7 +7,6 @@ class Text
   final int TEXT_STOP = 600;
 
   String text;
+  //Met deze loadstrings wordt een txt file ingeladen. Elke line in de txt file heeft een aparte index value binnen de array.
   String[] woorden = loadStrings("Tekst.txt");
-
-  final String DEFAULT_SCHERM = "Je bent te ver!";
 }
