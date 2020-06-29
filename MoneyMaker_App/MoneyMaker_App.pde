@@ -1,19 +1,27 @@
-ArrayList<Screen> screens;
+//Money Maker interactieve tutorial
+//Nordin el Hadaoui, 500833417
+//Kiano Wortel, 
+//Pepijn
 
-//Screens screens;
+Screen screens;
 Style style;
 Text text;
 int screen = 1;
 int count;
 final int COUNT_LIMIT = 40;
 
+final int LINKERPIJL_XLOC = 100;
+final int RECHTERPIJL_XLOC = 1500;
+final int PIJL_YLOC = 865;
+final int PIJL_WIDTH = 100;
+final int PIJL_HEIGHT = 50;
+
 void setup()
 {
   size(1650, 900);
   text = new Text();
-  screens = new ArrayList<Screen>();
   style = new Style();
-  //screens = new Screen();
+  screens = new Screen();
   textAlign(CENTER);
   rectMode(CENTER);
 }
@@ -21,32 +29,26 @@ void setup()
 void draw()
 {
   count++;
-  background(style.backgroundColor);
+  background(style.BACKGROUND_COLOR);
   println("Screen " + screen);
-  screens.add(new Screen());
   defaultScreen();
-  //screens.display();
-
-  /*
-  if (screens.size() < 4)
-   {
-   screens.add(new Screen());
-   }
-   */
-  for (int i = 0; i < screens.size(); i++)
-  {
-    Screen s = screens.get(i);
-    s.display();
-  }
+  screens.restart();
 }
 
 void defaultScreen()
 {
-  imageMode(CORNER);
   textSize(text.TEXT_SIZE);
 
-  text(text.text, text.TEXT_XPOSITION, text.TEXT_YPOSITION, text.TEXT_START, text.TEXT_STOP);
-  image(style.picture, style.posImg, style.posImg, style.size, style.size);
+  if (screen <= screens.MIN_SCREEN || screen >= screens.MAX_SCREEN) {
+    text(text.woorden[0], text.TEXT_XPOSITION, text.TEXT_YPOSITION, text.TEXT_START, text.TEXT_STOP);
+    image(style.picture.get(0), style.PICTURE_XPOSITION, style.PICTURE_YPOSITION, style.PICTURE_SIZE, style.PICTURE_SIZE);
+  }
+  
+  if (screen > screens.MIN_SCREEN && screen < screens.MAX_SCREEN) {
+    text(text.woorden[screen], text.TEXT_XPOSITION, text.TEXT_YPOSITION, text.TEXT_START, text.TEXT_STOP);
+
+    image(style.picture.get(screen), style.PICTURE_XPOSITION, style.PICTURE_YPOSITION, style.PICTURE_SIZE, style.PICTURE_SIZE);
+  }
 
   next(screen--);
   previous(screen++);
@@ -63,14 +65,13 @@ boolean overlaps(float x0, float y0, float w0, float h0)
     return false;
   }
 }
-
 void next(int nextScreen)
 {
   imageMode(CENTER);
-  fill(style.white);
-  image(style.rechterPijl, 1500, 865, 100, 50);
+  fill(style.WHITE);
+  image(style.rechterPijl, RECHTERPIJL_XLOC, PIJL_YLOC, PIJL_WIDTH, PIJL_HEIGHT);
 
-  if (overlaps(1500, 865, 100, 50))
+  if (overlaps(RECHTERPIJL_XLOC, PIJL_YLOC, PIJL_WIDTH, PIJL_HEIGHT))
   {
     screen = nextScreen;
   }
@@ -79,9 +80,10 @@ void next(int nextScreen)
 void previous(int previousScreen)
 {
   imageMode(CENTER);
-  fill(style.white);
-  image(style.linkerPijl, 100, 865, 100, 50);
-  if (overlaps(100, 865, 100, 50))
+  fill(style.WHITE);
+  image(style.linkerPijl, LINKERPIJL_XLOC, PIJL_YLOC, PIJL_WIDTH, PIJL_HEIGHT);
+
+  if (overlaps(LINKERPIJL_XLOC, PIJL_YLOC, PIJL_WIDTH, PIJL_HEIGHT))
   {
     screen = previousScreen;
   }
