@@ -10,7 +10,7 @@ class Style
   final int PICTURE_YPOSITION = 400;
   ArrayList<PImage> picture = new ArrayList();
   
-  final int NUMBER_PICTURES = 7;
+  final int NUMBER_PICTURES = 10;
 
   PImage rechterPijl;
   PImage linkerPijl;

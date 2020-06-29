@@ -1,7 +1,7 @@
 //Money Maker interactieve tutorial
 //Nordin el Hadaoui, 500833417
-//Kiano Wortel, 
-//Pepijn
+//Kiano Wortel, 500825684
+//Pepijn Kluft, 500822339
 
 Screen screens;
 Style style;

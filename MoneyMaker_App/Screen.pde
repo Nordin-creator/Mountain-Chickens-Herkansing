@@ -1,6 +1,6 @@
 class Screen
 {
-  final int MAX_SCREEN = 7;
+  final int MAX_SCREEN = 10;
   final int MIN_SCREEN = 0;
   final int START_SCREEN = 1;
   
